@@ -1,0 +1,8 @@
+---
+Language:             Proto
+BasedOnStyle:         Chromium
+IndentWidth:          4
+NamespaceIndentation: All
+TabWidth:             4
+UseTab:               ForIndentation
+...

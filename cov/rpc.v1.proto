@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package cov.rpc.v1;
+
+import "proto/cov/repository.v1.proto";
+
+message Event {
+	int32 id = 1;
+
+	oneof message {
+		repository.v1.RepositoryAddedEvent repository_added = 2;
+		repository.v1.RepositoryRemovedEvent repository_removed = 3;
+		repository.v1.RepositoryUpdatedEvent repository_updated = 4;
+	}
+}
+
+message Request {
+	int32 id = 1;
+
+	oneof message {
+		repository.v1.ListRepositoriesRequest list_repositories = 2;
+		repository.v1.CreateRepositoryRequest create_repository = 3;
+		repository.v1.UpdateRepositoryRequest update_repository = 4;
+		repository.v1.RemoveRepositoryRequest remove_repository = 5;
+	}
+};
+
+message Response {
+	int32 id = 1;
+
+	oneof message {
+		repository.v1.ListRepositoriesResponse list_repositories = 2;
+		repository.v1.CreateRepositoryResponse create_repository = 3;
+		repository.v1.UpdateRepositoryResponse update_repository = 4;
+		repository.v1.RemoveRepositoryResponse remove_repository = 5;
+	}
+};

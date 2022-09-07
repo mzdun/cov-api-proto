@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package cov.repository.v1;
+
+enum Result {
+	Ok = 0;
+	RepoNotFound = 1;
+	InvalidId = 2;
+	DuplicateId = 3;
+	InvalidPath = 4;
+	DuplicatePath = 5;
+};
+
+message ListRepositoriesRequest {
+	optional int32 dummy = 1;
+};
+message ListRepositoriesResponse {
+	repeated Repository repos = 1;
+};
+
+message CreateRepositoryRequest {
+	Repository repo = 1;
+};
+
+message CreateRepositoryResponse {
+	Result result = 1;
+};
+
+message UpdateRepositoryRequest {
+	Repository repo = 1;
+};
+
+message UpdateRepositoryResponse {
+	Result result = 1;
+};
+
+message RemoveRepositoryRequest {
+	string repo_id = 1;
+};
+
+message RemoveRepositoryResponse {
+	Result result = 1;
+};
+
+message RepositoryAddedEvent {
+	Repository repo = 1;
+};
+
+message RepositoryRemovedEvent {
+	string repo_id = 1;
+};
+
+message RepositoryUpdatedEvent {
+	Repository repo = 1;
+};
+
+message Repository {
+	string id = 1;
+	string covdata = 2;
+	optional string title = 3;
+	optional string icon = 4;
+};
